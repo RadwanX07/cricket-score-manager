@@ -1,0 +1,31 @@
+Build a full-stack cricket score management website with the following requirements:
+
+Roles:
+1. Player: register, login, view profile, track stats, participate in matches and tournaments.
+2. Organizer: create single matches and tournaments, assign teams, input scores, view stats and leaderboards.
+3. Admin: optional site management.
+
+Features:
+- Player dashboard with profile info, match history, and statistics.
+- Organizer dashboard for match creation, team formation, score input, and tournament management.
+- Single match and tournament match support.
+- Automated leaderboard and player stats updates.
+- Notifications to players for upcoming matches.
+- Publicly viewable scoreboard pages.
+- Export match and tournament stats as CSV.
+
+Tech Stack:
+- Frontend: React + Tailwind CSS
+- Backend: Django REST API
+- Database: PostgreSQL
+- Authentication: JWT
+- Optional: Chart.js for stats visualization
+
+Database models:
+- Users (id, name, email, password, role, profile_info)
+- Players (id, user_id, stats)
+- Matches (id, type, date, teams, scores)
+- Teams (id, match_id, player_ids)
+- Tournaments (id, name, matches, participants, standings)
+
+Please generate a complete project structure including frontend and backend, with API routes, database models, and basic UI templates for dashboards, player profiles, match input, and leaderboards.
