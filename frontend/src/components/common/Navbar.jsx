@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
+import { useAuth } from '../../context/AuthContext';
 import { Menu, X, Home, Trophy, Users, Calendar, BarChart3, LogOut, User } from 'lucide-react';
 import { useState } from 'react';
 

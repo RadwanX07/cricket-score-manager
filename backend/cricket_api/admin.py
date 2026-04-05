@@ -1,5 +1,8 @@
 from django.contrib import admin
-from .models import User, Player, Team, Tournament, Match, Innings, BallByBall
+from .models import User
+from .models_player import Player
+from .models_team import Team
+from .models_match import Tournament, Match, Innings, BallByBall
 
 @admin.register(User)
 class UserAdmin(admin.ModelAdmin):

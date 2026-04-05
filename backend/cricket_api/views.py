@@ -3,6 +3,7 @@ from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework_simplejwt.tokens import RefreshToken
+from rest_framework_simplejwt.views import TokenObtainPairView
 from django.contrib.auth import get_user_model
 from django.db.models import Count, Sum, Avg
 from .models_player import Player
@@ -42,6 +43,19 @@ class AuthView(generics.CreateAPIView):
             'refresh': str(refresh),
             'access': str(refresh.access_token),
         }, status=status.HTTP_201_CREATED)
+
+class LoginView(TokenObtainPairView):
+    permission_classes = [AllowAny]
+
+    def post(self, request, *args, **kwargs):
+        response = super().post(request, *args, **kwargs)
+        if response.status_code == 200:
+            try:
+                user = User.objects.get(username=request.data.get('username'))
+                response.data['user'] = UserSerializer(user).data
+            except User.DoesNotExist:
+                pass
+        return response
 
 class PlayerViewSet(viewsets.ModelViewSet):
     queryset = Player.objects.all()
